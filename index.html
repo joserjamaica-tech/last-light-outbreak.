@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>LAST LIGHT: THE OUTBREAK — Gas Station Prototype</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#151a1d;font-family:Arial,sans-serif;color:#e9eceb}#renderCanvas{width:100%;height:100%;display:block;touch-action:none;outline:none}#hud{position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,10,13,.55),transparent 23%,transparent 72%,rgba(5,10,13,.35))}#brand{position:absolute;top:16px;left:17px;font-weight:900;letter-spacing:2px;font-size:16px;text-shadow:0 2px 5px #000}#sub{font-size:10px;letter-spacing:2px;color:#b9c4c3;margin-top:4px}#hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:12px;color:#e1e6e5;background:#101719bb;border:1px solid #71808066;border-radius:20px;padding:9px 14px;white-space:nowrap}#buttons{position:absolute;right:14px;top:14px;display:flex;gap:8px;pointer-events:auto}button{background:#172326dd;color:#e8eeee;border:1px solid #87949488;border-radius:8px;padding:9px 11px;font-weight:bold}#status{position:absolute;left:17px;bottom:18px;font-size:10px;color:#b7c2c1;letter-spacing:1px}
+</style>
+</head>
+<body>
+<canvas id="renderCanvas"></canvas>
+<div id="hud"><div id="brand">LAST LIGHT <span style="color:#b95e45">/</span> THE OUTBREAK<div id="sub">DAY 17 • LATE AFTERNOON • OVERCAST</div></div><div id="buttons"><button id="quality">QUALITY: HIGH</button><button id="reset">RESET VIEW</button></div><div id="status">ENVIRONMENT PROTOTYPE 01</div><div id="hint">DRAG TO LOOK • PINCH / SCROLL TO ZOOM</div></div>
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script>
+(()=>{
+const canvas=document.getElementById('renderCanvas');
+if(!window.BABYLON){document.getElementById('hint').textContent='3D ENGINE FAILED TO LOAD — check your connection and refresh';return;}
+const B= BABYLON, engine=new B.Engine(canvas,true,{preserveDrawingBuffer:false,stencil:true,adaptToDeviceRatio:true});
+let high=true;
+const scene=new B.Scene(engine);scene.clearColor=new B.Color4(.39,.46,.49,1);scene.fogMode=B.Scene.FOGMODE_EXP2;scene.fogColor=new B.Color3(.43,.49,.51);scene.fogDensity=.009;
+const camera=new B.ArcRotateCamera('inspectionCamera',-Math.PI/2.2,1.12,37,new B.Vector3(0,2,0),scene);camera.attachControl(canvas,true);camera.lowerRadiusLimit=12;camera.upperRadiusLimit=65;camera.lowerBetaLimit=.35;camera.upperBetaLimit=1.48;camera.wheelPrecision=35;camera.panningSensibility=75;camera.inertia=.78;
+const hemi=new B.HemisphericLight('cloudLight',new B.Vector3(0,1,0),scene);hemi.intensity=.72;hemi.groundColor=new B.Color3(.22,.24,.25);
+const sun=new B.DirectionalLight('lateSun',new B.Vector3(-.45,-1,.25),scene);sun.position=new B.Vector3(25,35,-20);sun.intensity=.85;
+function mat(name,color,rough=.9){let m=new B.StandardMaterial(name,scene);m.diffuseColor=B.Color3.FromHexString(color);m.specularColor=new B.Color3(.12,.12,.12);m.specularPower=16;return m;}
+const asphalt=mat('cracked asphalt','#343b3d'), concrete=mat('aged concrete','#777b76'), wall=mat('dirty cream siding','#aaa394'), trim=mat('faded red trim','#713d36'), roof=mat('roof','#343638'), dark=mat('dark metal','#20282a'), glass=mat('dusty glass','#52686b'), rust=mat('rust','#754b39'), yellow=mat('old yellow paint','#b69b58'), white=mat('weathered white','#c1b9a5'), tire=mat('rubber','#171a1a'), green=mat('dead grass','#59604a');
+function box(name,pos,scale,material){let m=B.MeshBuilder.CreateBox(name,{width:scale[0],height:scale[1],depth:scale[2]},scene);m.position.set(...pos);m.material=material;return m;}
+function cyl(name,pos,diam,height,material,segments=16){let m=B.MeshBuilder.CreateCylinder(name,{diameter:diam,height,tessellation:segments},scene);m.position.set(...pos);m.material=material;return m;}
+function ground(name,x,z,w,d,y,material){return box(name,[x,y,z],[w,.18,d],material);}
+// Ground plane and broken road
+ box('world ground',[0,-.18,0],[160,.3,140],asphalt);
+box('road shoulder',[0,-.01,22],[100,.12,17],dark);
+for(let x=-44;x<48;x+=12)box('faded road marking',[x,.06,22],[5,.025,.22],yellow);
+// Station forecourt
+ ground('forecourt',0,3,46,34,.02,concrete);
+// Convenience store building
+box('store body',[0,3,-9],[22,7,13],wall);
+box('store front fascia',[0,6.65,-2.35],[22,.75,.35],trim);
+box('store roof',[0,6.95,-9],[23,.45,14],roof);
+box('front window left',[-6.3,3.5,-2.35],[5.1,3.5,.13],glass);
+box('front window right',[5.8,3.5,-2.35],[6.3,3.5,.13],glass);
+box('door frame',[.1,3.1,-2.2],[2.1,4.1,.28],dark);
+box('door glass',[.1,3.1,-2.04],[1.65,3.55,.06],glass);
+box('door handle',[.72,3.1,-1.98],[.08,.45,.08],rust);
+box('sign backing',[0,6.8,-2.12],[9,.65,.18],dark);
+// Sign letters via simple block lettering impression
+box('sign red stripe',[0,6.8,-2],[7.7,.08,.05],trim);
+// Canopy and supports
+box('canopy roof',[0,6.3,5],[27,.65,13],roof);
+box('canopy faded fascia',[0,5.95,11.5],[27,.65,.25],trim);
+for(let x of [-11.5,11.5])for(let z of [0,10])box('canopy column',[x,3.1,z],[.55,5.8,.55],dark);
+// Gas pumps
+function pump(x,z,id){box('pump island '+id,[x,.3,z],[3,.5,2.1],white);box('pump body '+id,[x,1.65,z],[1.35,2.35,1],rust);box('pump face '+id,[x,2.1,z-.53],[.95,.85,.06],dark);box('pump display '+id,[x,2.17,z-.57],[.65,.34,.025],glass);box('pump lower panel '+id,[x,1.35,z-.53],[.95,.6,.05],yellow);let hose=cyl('hose '+id,[x+.85,1.7,z],.12,1.65,tire);hose.rotation.z=Math.PI/2;box('nozzle '+id,[x+1.35,1.25,z-.1],[.22,.48,.2],dark);}
+pump(-7,5,1);pump(0,5,2);pump(7,5,3);
+// Abandoned car: body, cabin, wheels
+box('abandoned sedan body',[15,1.1,15],[7.4,1.55,3.2],rust);
+box('sedan cabin',[14.8,2.25,15],[4.1,1.35,2.75],dark);
+box('windshield',[14.8,2.35,13.59],[3.2,.95,.06],glass);
+for(let x of [12.7,17.3])for(let z of [13.5,16.5]){let w=cyl('car wheel',[x,.68,z],1.25,.42,tire,20);w.rotation.z=Math.PI/2;}
+// Scattered debris, crates, barrels, weeds
+for(let i=0;i<18;i++){let x=-20+(i*17%39),z=-12+(i*11%27);let b=box('debris '+i,[x,.22,z],[.5+(i%3)*.25,.35,.45],i%2?rust:dark);b.rotation.y=i*.7;}
+for(let i=0;i<7;i++){let x=-19+i*6.2;let barrel=cyl('abandoned barrel',[x,.65,-1],.85,1.3,i%2?rust:dark,12);}
+for(let i=0;i<32;i++){let x=-42+(i*19%84),z=-26+(i*13%62);if(Math.abs(x)<15&&z>-5&&z<16)continue;let h=.25+(i%5)*.12;let weed=box('weeds '+i,[x,h/2,z],[.12,h,.12],green);weed.rotation.y=i*.8;}
+// Perimeter fence sections
+for(let x=-35;x<=35;x+=2.8){box('fence post',[x,1.15,-25],[.18,2.3,.18],dark);if(x<35)box('fence rail',[x+1.4,1.55,-25],[2.8,.12,.12],rust);}
+// A few utility poles and sagging cables
+for(let x of [-28,28]){box('utility pole',[x,7,18],[.35,14,.35],dark);box('cross arm',[x,13,18],[3,.22,.22],dark);}
+// Distant silhouettes
+for(let i=0;i<12;i++){let x=-55+i*10,z=-42-(i%3)*5;box('distant ruined building',[x,3+(i%4),z],[7,6+(i%4)*2,6],i%2?dark:roof);}
+// Low cloudy sky ambience
+const sky=B.MeshBuilder.CreateSphere('sky dome',{diameter:500,segments:16},scene);sky.isPickable=false;let skyMat=new B.StandardMaterial('cloudy sky',scene);skyMat.backFaceCulling=false;skyMat.disableLighting=true;skyMat.diffuseColor=new B.Color3(.43,.5,.53);skyMat.emissiveColor=new B.Color3(.16,.19,.2);sky.material=skyMat;sky.infiniteDistance=true;
+// Lighting and soft shadows
+const shadow=new B.ShadowGenerator(1024,sun);shadow.useBlurExponentialShadowMap=true;shadow.blurKernel=16;
+scene.meshes.forEach(m=>{if(m.name.includes('column')||m.name.includes('pump body')||m.name.includes('sedan')||m.name.includes('barrel')){m.receiveShadows=true;shadow.addShadowCaster(m);}});
+// Small atmospheric point lights under canopy
+for(let x of [-8,0,8]){let l=new B.PointLight('dead canopy lamp',new B.Vector3(x,5.7,5),scene);l.diffuse=new B.Color3(.78,.68,.48);l.intensity=.18;l.range=9;}
+engine.setHardwareScalingLevel(1.15);
+engine.runRenderLoop(()=>scene.render());
+window.addEventListener('resize',()=>engine.resize());
+document.getElementById('reset').onclick=()=>{camera.alpha=-Math.PI/2.2;camera.beta=1.12;camera.radius=37;camera.target.set(0,2,0);};
+document.getElementById('quality').onclick=e=>{high=!high;engine.setHardwareScalingLevel(high?1.15:1.7);shadow.getShadowMap().refreshRate=high?1:2;e.target.textContent='QUALITY: '+(high?'HIGH':'PERFORMANCE');};
+})();
+</script>
+</body></html>
