@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>LAST LIGHT — Photorealistic Graphics Test 06</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>LAST LIGHT — One Pump Integration Test 06.1</title>
 <style>
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#151a1d;font-family:system-ui,Arial;color:#e8e5dc}#renderCanvas{width:100%;height:100%;display:block;touch-action:none}#hud{position:fixed;inset:0;pointer-events:none}.tag{position:absolute;left:16px;top:14px;background:#101719c9;border:1px solid #87918c55;padding:9px 12px;border-radius:5px;font-size:12px;letter-spacing:.13em}.hint{position:absolute;left:16px;bottom:16px;background:#101719c9;border:1px solid #87918c55;padding:9px 12px;border-radius:5px;font-size:11px;color:#c6cec8}.cross{position:absolute;left:50%;top:50%;width:7px;height:7px;border:1px solid #e7e5d8aa;border-radius:50%;transform:translate(-50%,-50%)}#start{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(#10171988,#101719bb);z-index:5}#panel{max-width:340px;margin:20px;padding:24px;background:#1a2325ee;border:1px solid #7c898266;border-radius:8px;text-align:center;box-shadow:0 18px 60px #0008}h1{font-size:24px;letter-spacing:.16em;margin:0 0 8px}p{font-size:13px;line-height:1.55;color:#c0c8c2}button{background:#b6b49b;color:#182022;border:0;border-radius:4px;padding:12px 22px;font-weight:700;letter-spacing:.1em}#mobile{position:fixed;right:15px;bottom:18px;display:none;gap:8px;z-index:3}#mobile button{width:52px;height:52px;padding:0;border-radius:50%;opacity:.72;touch-action:none}@media(pointer:coarse){#mobile{display:flex}}
 #settingsToggle{position:fixed;right:16px;top:14px;z-index:8;pointer-events:auto;padding:9px 13px;background:#182321dd;color:#e8e5dc;border:1px solid #9aa39477;border-radius:5px;font-size:11px;letter-spacing:.1em}#settings{display:none;position:fixed;right:16px;top:58px;z-index:9;width:min(320px,calc(100vw - 32px));padding:16px;background:#17211fee;border:1px solid #9aa39477;border-radius:7px;box-shadow:0 14px 40px #0009;pointer-events:auto}#settings h2{font-size:15px;letter-spacing:.12em;margin:0 0 12px}#settings .bindrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;font-size:12px;color:#d6d9ce}#settings .bindrow button{padding:7px 10px;min-width:76px;font-size:11px}#settings .note{font-size:10px;color:#9da99e;line-height:1.4;margin-top:12px}#settingsClose{float:right;padding:4px 8px;font-size:10px}@media(pointer:coarse){#settingsToggle{top:auto;right:12px;bottom:90px}}
 </style>
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script>if(!window.BABYLON){document.write('<scr'+'ipt src="https://cdn.jsdelivr.net/npm/babylonjs@7.54.3/babylon.js"><\/scr'+'ipt>');}</script>
+<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+<script>if(window.BABYLON && !BABYLON.GLTFFileLoader){document.write('<scr'+'ipt src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@7.54.3/babylonjs.loaders.min.js"><\/scr'+'ipt>');}</script>
 </head>
 <body>
 <canvas id="renderCanvas"></canvas>
-<div id="hud"><div class="tag">LAST LIGHT <span style="color:#b8b89f">/ WASHINGTON STATE  /  GRAPHICS TEST 06</span> &nbsp; • &nbsp; DAY 17</div><div class="cross"></div><div style="position:absolute;right:16px;top:54px;background:#101719b8;border:1px solid #87918c44;padding:7px 10px;border-radius:4px;font-size:10px;letter-spacing:.08em;color:#d6d5c8">GRAPHICS TEST 06 · PBR / AO / BLOOM</div><div class="hint">WASD: MOVE &nbsp; • &nbsp; SPACE: JUMP &nbsp; • &nbsp; SHIFT: RUN &nbsp; • &nbsp; MOUSE: LOOK</div></div>
+<div id="hud"><div class="tag">LAST LIGHT <span style="color:#b8b89f">/ WASHINGTON STATE  /  ONE-PUMP TEST 06.1</span> &nbsp; • &nbsp; DAY 17</div><div class="cross"></div><div style="position:absolute;right:16px;top:54px;background:#101719b8;border:1px solid #87918c44;padding:7px 10px;border-radius:4px;font-size:10px;letter-spacing:.08em;color:#d6d5c8">ONE-PUMP TEST 06.1 · ORIGINAL SCENE PRESERVED</div><div class="hint">WASD: MOVE &nbsp; • &nbsp; SPACE: JUMP &nbsp; • &nbsp; SHIFT: RUN &nbsp; • &nbsp; MOUSE: LOOK</div></div>
 <div id="mobile"><button id="forward">▲</button><button id="left">◀</button><button id="back">▼</button><button id="right">▶</button></div>
 <button id="settingsToggle" type="button">SETTINGS</button>
 <div id="settings"><button id="settingsClose" type="button">CLOSE</button><h2>CONTROLS</h2><div id="bindRows"></div><div class="note">Select a control, then press the key you want to assign. Defaults: WASD to move, Space to jump, Shift to run. Your key choices are saved in this browser.</div></div>
-<div id="start"><div id="panel"><h1>LAST LIGHT</h1><div style="font-size:10px;letter-spacing:.25em;color:#b8b89f">PHOTOREALISTIC GRAPHICS TEST 06</div><p>Washington State. Day 17 after the outbreak. A recently abandoned roadside station beside a Washington forest highway. This is a graphics experiment, not the final game. Graphics test: physically based materials, environment reflections, cinematic sky, ambient occlusion and bloom. This is an experimental visual-quality build.</p><button id="enter">ENTER THE SCENE</button><p style="font-size:10px;color:#89958e">Graphics test 06 • Experimental PBR + reflections + post-processing • Internet required for Babylon.js and environment map.</p></div></div>
+<div id="start"><div id="panel"><h1>LAST LIGHT</h1><div style="font-size:10px;letter-spacing:.25em;color:#b8b89f">ONE-PUMP INTEGRATION TEST 06.1</div><p>Washington State. Day 17 after the outbreak. A recently abandoned roadside station beside a Washington forest highway. This is a controlled 3D asset integration test, not the final game. The original Prototype 06 environment and rendering settings are preserved; only the center fuel pump is replaced if the imported model loads successfully.</p><button id="enter">ENTER THE SCENE</button><p style="font-size:10px;color:#89958e">One-pump integration test 06.1 • Original scene preserved; one imported GLB pump is tested alongside the original layout. Internet required for Babylon.js and the model loader.</p></div></div>
 <script>
 (()=>{
 const canvas=document.getElementById('renderCanvas');
@@ -85,6 +87,64 @@ let hoseLine=BABYLON.MeshBuilder.CreateTube('hanging hose '+n,{path:[new BABYLON
 }
 
 pump(-5,1,1);pump(0,1,2);pump(5,1,3);
+
+// CONTROLLED ASSET TEST 06.1: import one detailed fuel pump at the center position.
+// Prototype 06 lighting, PBR scene materials, SSAO, post-processing and all other geometry remain unchanged.
+(async()=>{
+ const modelUrl='./assets/LAST_LIGHT_Fuel_Pump.glb';
+ try{
+  if(!BABYLON.SceneLoader || !BABYLON.GLTFFileLoader)throw new Error('Babylon glTF loader did not initialize.');
+  const result=await BABYLON.SceneLoader.ImportMeshAsync(null,'./assets/','LAST_LIGHT_Fuel_Pump.glb',scene);
+  // Convert every imported material to StandardMaterial (not just materials whose class name matches PBR).
+  // This avoids the imported glTF PBR shader variant that triggered the uniform-buffer limit.
+  const safeMaterials=new Map();
+  for(const mesh of result.meshes){
+   const sourceMat=mesh.material;
+   if(!sourceMat)continue;
+   const key=sourceMat.uniqueId ?? sourceMat.name;
+   if(!safeMaterials.has(key)){
+    const safeMat=new BABYLON.StandardMaterial(sourceMat.name+' | one-pump compatibility',scene);
+    if(sourceMat.albedoColor)safeMat.diffuseColor=sourceMat.albedoColor.clone();
+    else if(sourceMat.diffuseColor)safeMat.diffuseColor=sourceMat.diffuseColor.clone();
+    if(sourceMat.albedoTexture)safeMat.diffuseTexture=sourceMat.albedoTexture;
+    else if(sourceMat.diffuseTexture)safeMat.diffuseTexture=sourceMat.diffuseTexture;
+    if(sourceMat.emissiveColor)safeMat.emissiveColor=sourceMat.emissiveColor.clone();
+    if(sourceMat.emissiveTexture)safeMat.emissiveTexture=sourceMat.emissiveTexture;
+    safeMat.alpha=sourceMat.alpha;
+    safeMat.backFaceCulling=sourceMat.backFaceCulling;
+    const roughness=Number.isFinite(sourceMat.roughness)?sourceMat.roughness:.72;
+    const metallic=Number.isFinite(sourceMat.metallic)?sourceMat.metallic:0;
+    const shine=Math.max(8,Math.min(96,96*(1-roughness)));
+    const spec=Math.max(.08,Math.min(.62,.12+metallic*.42));
+    safeMat.specularColor=new BABYLON.Color3(spec,spec,spec);
+    safeMat.specularPower=shine;
+    safeMaterials.set(key,safeMat);
+   }
+   mesh.material=safeMaterials.get(key);
+  }
+  const root=result.meshes.find(m=>m.name==='__root__')||result.meshes[0];
+  root.position=new BABYLON.Vector3(0,.36,1);
+  root.scaling=new BABYLON.Vector3(1,1,1);
+  root.rotation=new BABYLON.Vector3(0,0,0);
+  for(const mesh of result.meshes){
+   if(mesh!==root && !mesh.parent)mesh.parent=root;
+   mesh.isPickable=false;mesh.checkCollisions=false;mesh.receiveShadows=true;
+   if(mesh.getTotalVertices && mesh.getTotalVertices()>0)shadow.addShadowCaster(mesh,true);
+  }
+  // Hide only the center procedural pump after the detailed model is ready; keep its concrete island.
+  for(const mesh of scene.meshes){
+   if(mesh.name==='pump island 2')continue;
+   if(/pump|fuel hose|hanging hose|nozzle|digital display|lit pump lcd/i.test(mesh.name) && / 2$/.test(mesh.name))mesh.setEnabled(false);
+  }
+  console.info('LAST LIGHT: one detailed fuel pump loaded successfully.');
+ }catch(err){
+  console.error('LAST LIGHT one-pump asset test failed; original center pump remains visible.',err);
+  const note=document.createElement('div');
+  note.textContent='DETAILED PUMP TEST FAILED — original pump retained';
+  note.style.cssText='position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:20;background:#482b25;color:#fff;padding:10px 14px;border-radius:5px;font:12px system-ui';
+  document.body.appendChild(note);
+ }
+})();
 // Bollards and wheel stops
 for(let x of [-7,-3,3,7]){let b=BABYLON.MeshBuilder.CreateCylinder('bollard',{height:1.15,diameter:.24,tessellation:12},scene);b.position.set(x,.58,3.7);b.material=yellow;}
 // Damaged parked car to right
@@ -115,7 +175,7 @@ for(let i=0;i<13;i++){let puddle=BABYLON.MeshBuilder.CreateDisc('shallow rain pu
 const oil=mat('old oil stains','#202624');oil.diffuseColor=new BABYLON.Color3(.18,.2,.18);for(let i=0;i<8;i++){let stain=BABYLON.MeshBuilder.CreateDisc('oil slick',{radius:1,tessellation:20},scene);stain.scaling.set(.6+(i%3)*.4,1,.18+(i%2)*.1);stain.rotation.x=Math.PI/2;stain.position.set(-10+i*2.8,.047,5+(i%3)*1.3);stain.material=oil;stain.checkCollisions=false;}
 for(let i=0;i<18;i++){let shard=BABYLON.MeshBuilder.CreatePolyhedron('broken glass shard',{type:1,size:.22+(i%4)*.08},scene);shard.position.set(-7+(i*1.83)%15,.08,4+(i*1.17)%7);shard.scaling.y=.08;shard.rotation.y=i*.73;shard.material=glass;shard.checkCollisions=false;}
 box('fallen road sign post',-17,.18,1,.12,.35,.12,wood).rotation.z=1.1;box('fallen road sign',-17,.42,1.4,1.8,.85,.12,red).rotation.z=-.24;
-// WASHINGTON STATE  /  GRAPHICS TEST 06 FOREST + RURAL HIGHWAY. Forest assets are instanced low-cost
+// WASHINGTON STATE  /  ONE-PUMP TEST 06.1 FOREST + RURAL HIGHWAY. Forest assets are instanced low-cost
 // procedural stand-ins for the first playable pass; replace hero trees with optimized licensed GLBs later.
 const roadMat=mat('forest highway asphalt','#292f2e');roadMat.diffuseTexture=surface('highway aggregate','#292f2e','#505752','#171d1c',8);
 const lineMat=mat('worn road paint','#d1c5a0');lineMat.emissiveColor=new BABYLON.Color3(.035,.028,.012);
