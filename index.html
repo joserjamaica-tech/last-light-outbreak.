@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>LAST LIGHT — 3D Asset Test 07</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>LAST LIGHT — 3D Asset Test 07.2</title>
 <style>
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#151a1d;font-family:system-ui,Arial;color:#e8e5dc}#renderCanvas{width:100%;height:100%;display:block;touch-action:none}#hud{position:fixed;inset:0;pointer-events:none}.tag{position:absolute;left:16px;top:14px;background:#101719c9;border:1px solid #87918c55;padding:9px 12px;border-radius:5px;font-size:12px;letter-spacing:.13em}.hint{position:absolute;left:16px;bottom:16px;background:#101719c9;border:1px solid #87918c55;padding:9px 12px;border-radius:5px;font-size:11px;color:#c6cec8}.cross{position:absolute;left:50%;top:50%;width:7px;height:7px;border:1px solid #e7e5d8aa;border-radius:50%;transform:translate(-50%,-50%)}#start{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(#10171988,#101719bb);z-index:5}#panel{max-width:340px;margin:20px;padding:24px;background:#1a2325ee;border:1px solid #7c898266;border-radius:8px;text-align:center;box-shadow:0 18px 60px #0008}h1{font-size:24px;letter-spacing:.16em;margin:0 0 8px}p{font-size:13px;line-height:1.55;color:#c0c8c2}button{background:#b6b49b;color:#182022;border:0;border-radius:4px;padding:12px 22px;font-weight:700;letter-spacing:.1em}#mobile{position:fixed;right:15px;bottom:18px;display:none;gap:8px;z-index:3}#mobile button{width:52px;height:52px;padding:0;border-radius:50%;opacity:.72;touch-action:none}@media(pointer:coarse){#mobile{display:flex}}
 #settingsToggle{position:fixed;right:16px;top:14px;z-index:8;pointer-events:auto;padding:9px 13px;background:#182321dd;color:#e8e5dc;border:1px solid #9aa39477;border-radius:5px;font-size:11px;letter-spacing:.1em}#settings{display:none;position:fixed;right:16px;top:58px;z-index:9;width:min(320px,calc(100vw - 32px));padding:16px;background:#17211fee;border:1px solid #9aa39477;border-radius:7px;box-shadow:0 14px 40px #0009;pointer-events:auto}#settings h2{font-size:15px;letter-spacing:.12em;margin:0 0 12px}#settings .bindrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;font-size:12px;color:#d6d9ce}#settings .bindrow button{padding:7px 10px;min-width:76px;font-size:11px}#settings .note{font-size:10px;color:#9da99e;line-height:1.4;margin-top:12px}#settingsClose{float:right;padding:4px 8px;font-size:10px}@media(pointer:coarse){#settingsToggle{top:auto;right:12px;bottom:90px}}
@@ -13,11 +13,11 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#151a1d;fon
 </head>
 <body>
 <canvas id="renderCanvas"></canvas>
-<div id="hud"><div class="tag">LAST LIGHT <span style="color:#b8b89f">/ WASHINGTON STATE  /  3D ASSET TEST 07</span> &nbsp; • &nbsp; DAY 17</div><div class="cross"></div><div style="position:absolute;right:16px;top:54px;background:#101719b8;border:1px solid #87918c44;padding:7px 10px;border-radius:4px;font-size:10px;letter-spacing:.08em;color:#d6d5c8">3D ASSET TEST 07 · GLB FUEL PUMPS</div><div class="hint">WASD: MOVE &nbsp; • &nbsp; SPACE: JUMP &nbsp; • &nbsp; SHIFT: RUN &nbsp; • &nbsp; MOUSE: LOOK</div></div>
+<div id="hud"><div class="tag">LAST LIGHT <span style="color:#b8b89f">/ WASHINGTON STATE  /  3D ASSET TEST 07.2</span> &nbsp; • &nbsp; DAY 17</div><div class="cross"></div><div style="position:absolute;right:16px;top:54px;background:#101719b8;border:1px solid #87918c44;padding:7px 10px;border-radius:4px;font-size:10px;letter-spacing:.08em;color:#d6d5c8">3D ASSET TEST 07.2 · GLB FUEL PUMPS · LIGHTING COMPATIBILITY FIX</div><div class="hint">WASD: MOVE &nbsp; • &nbsp; SPACE: JUMP &nbsp; • &nbsp; SHIFT: RUN &nbsp; • &nbsp; MOUSE: LOOK</div></div>
 <div id="mobile"><button id="forward">▲</button><button id="left">◀</button><button id="back">▼</button><button id="right">▶</button></div>
 <button id="settingsToggle" type="button">SETTINGS</button>
 <div id="settings"><button id="settingsClose" type="button">CLOSE</button><h2>CONTROLS</h2><div id="bindRows"></div><div class="note">Select a control, then press the key you want to assign. Defaults: WASD to move, Space to jump, Shift to run. Your key choices are saved in this browser.</div></div>
-<div id="start"><div id="panel"><h1>LAST LIGHT</h1><div style="font-size:10px;letter-spacing:.25em;color:#b8b89f">3D ASSET TEST 07</div><p>Washington State. Day 17 after the outbreak. A recently abandoned roadside station beside a Washington forest highway. This is a 3D asset integration test, not the final game. 3D asset test: first detailed imported GLB fuel pump asset, replacing the previous procedural pump geometry.</p><button id="enter">ENTER THE SCENE</button><p style="font-size:10px;color:#89958e">3D asset test 07 • Imported detailed GLB fuel pumps • Keep the assets folder beside index.html.</p></div></div>
+<div id="start"><div id="panel"><h1>LAST LIGHT</h1><div style="font-size:10px;letter-spacing:.25em;color:#b8b89f">3D ASSET TEST 07.2</div><p>Washington State. Day 17 after the outbreak. A recently abandoned roadside station beside a Washington forest highway. This is a 3D asset integration test, not the final game. 3D asset test: first detailed imported GLB fuel pump asset, with a compatibility material fix for browser graphics limits.</p><button id="enter">ENTER THE SCENE</button><p style="font-size:10px;color:#89958e">3D asset test 07.2 • Reduced light count and disabled pre-pass AO for wider GPU compatibility. Keep the assets folder beside index.html.</p></div></div>
 <script>
 (()=>{
 const canvas=document.getElementById('renderCanvas');
@@ -29,8 +29,8 @@ const defaultBindings={forward:87,back:83,left:65,right:68,jump:32,run:16};let k
 const hemi=new BABYLON.HemisphericLight('cool forest sky',new BABYLON.Vector3(0,1,0),scene);hemi.intensity=1.25;hemi.diffuse=new BABYLON.Color3(.82,.88,1);hemi.groundColor=new BABYLON.Color3(.34,.39,.31);hemi.specular=new BABYLON.Color3(.12,.13,.12);
 const sun=new BABYLON.DirectionalLight('low warm late afternoon sun',new BABYLON.Vector3(.42,-.78,.46),scene);sun.position=new BABYLON.Vector3(-48,58,-54);sun.intensity=2.05;sun.diffuse=new BABYLON.Color3(1,.78,.56);sun.specular=new BABYLON.Color3(1,.86,.68);
 const shadow=new BABYLON.ShadowGenerator(2048,sun);shadow.useBlurExponentialShadowMap=true;shadow.blurKernel=24;shadow.bias=.00035;shadow.normalBias=.018;shadow.transparencyShadow=true;shadow.setDarkness(.22);shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=BABYLON.ShadowGenerator.QUALITY_HIGH;
-const forestBounce=new BABYLON.DirectionalLight('soft warm ground bounce',new BABYLON.Vector3(-.2,-1,-.25),scene);forestBounce.intensity=.38;forestBounce.diffuse=new BABYLON.Color3(.72,.79,.67);forestBounce.specular=new BABYLON.Color3(.08,.08,.07);
-const sunGlow=new BABYLON.PointLight('sunlit forecourt fill',new BABYLON.Vector3(-16,10,12),scene);sunGlow.diffuse=new BABYLON.Color3(1,.72,.45);sunGlow.intensity=.55;sunGlow.range=46;
+const forestBounce=new BABYLON.DirectionalLight('soft warm ground bounce',new BABYLON.Vector3(-.2,-1,-.25),scene);forestBounce.setEnabled(false);forestBounce.intensity=.38;forestBounce.diffuse=new BABYLON.Color3(.72,.79,.67);forestBounce.specular=new BABYLON.Color3(.08,.08,.07);
+const sunGlow=new BABYLON.PointLight('sunlit forecourt fill',new BABYLON.Vector3(-16,10,12),scene);sunGlow.setEnabled(false);sunGlow.diffuse=new BABYLON.Color3(1,.72,.45);sunGlow.intensity=.55;sunGlow.range=46;
 const sunDisc=BABYLON.MeshBuilder.CreateSphere('late afternoon sun disc',{diameter:5,segments:24},scene);sunDisc.position.set(-42,30,-76);const sunDiscMat=new BABYLON.StandardMaterial('sun disc glow',scene);sunDiscMat.emissiveColor=new BABYLON.Color3(1,.66,.36);sunDiscMat.disableLighting=true;sunDisc.material=sunDiscMat;sunDisc.isPickable=false;
 const mat=(name,color,rough=.9)=>{let m=new BABYLON.StandardMaterial(name,scene);m.diffuseColor=BABYLON.Color3.FromHexString(color);m.specularColor=new BABYLON.Color3(.12,.12,.12);m.roughness=rough;return m};
 // Hand-built tileable surface maps: mottled asphalt, pitted concrete, stained stucco and oxidized paint.
@@ -53,7 +53,7 @@ const tile=mat('dirty interior tile','#555a55');tile.diffuseTexture=surface('int
 box('checkout counter',-4.8,1.35,-7.2,3.8,1.1,1.05,dark);box('counter top',-4.8,1.94,-7.2,4,.12,1.18,concrete);
 for(let z of [-11.6,-9.5,-7.4]){box('grocery shelf frame',3.5,1.75,z,.18,3.0,.35,dark);box('grocery shelf',3.5, .75,z,3.8,.09,.8,wood);box('grocery shelf mid',3.5,1.65,z,3.8,.09,.8,wood);box('grocery shelf upper',3.5,2.55,z,3.8,.09,.8,wood);for(let i=0;i<8;i++){let colors=['#9a7047','#687c70','#9b8b61','#743e35'];let can=mat('product pack '+z+' '+i,colors[i%4]);let item=box('boxed groceries',2+i*.43,1.02,z,.25,.45,.28,can);item.checkCollisions=false;}}
 box('drink cooler body',-1.2,1.65,-12.25,2.2,2.9,.55,dark);box('cooler glass',-1.2,1.68,-11.94,1.8,2.35,.035,glass);for(let y of [.85,1.45,2.05,2.65])box('cooler shelf',-1.2,y,-11.88,1.72,.045,.08,concrete);
-for(let x of [-6.7,-3.8,0,5.8]){let bulb=box('interior fluorescent tube',x,5.72,-9,.95,.035,.08,lightmat);let glow=new BABYLON.PointLight('interior tube glow',new BABYLON.Vector3(x,5.4,-9),scene);glow.diffuse=new BABYLON.Color3(.8,.86,.78);glow.intensity=.12;glow.range=7;}
+for(let x of [-6.7,-3.8,0,5.8]){let bulb=box('interior fluorescent tube',x,5.72,-9,.95,.035,.08,lightmat);let glow=new BABYLON.PointLight('interior tube glow',new BABYLON.Vector3(x,5.4,-9),scene);glow.setEnabled(false);glow.diffuse=new BABYLON.Color3(.8,.86,.78);glow.intensity=.12;glow.range=7;}
 // Front facade glazing and door facing camera
 box('front fascia',0,5.45,-4.92,17.7,.85,.18,red);
 box('left display window',-5.1,3.05,-4.88,5.6,3.5,.09,glass);box('right display window',4.6,3.05,-4.88,6.3,3.5,.09,glass);
@@ -73,15 +73,39 @@ box('electrical service cabinet',7.7,2.4,-5.18,.65,1.05,.2,dark);box('broken wal
 box('canopy roof',0,5.25,1.1,19,.38,8.2,concrete);box('canopy underside',0,5.03,1.1,18.6,.08,7.8,dark);
 for(let x of [-9.2,9.2])box('canopy edge fascia',x,5.25,1.1,.12,.52,8.25,red);for(let z of [-2.85,5.05])box('canopy front rear trim',0,5.25,z,18.8,.42,.12,dark);for(let x of [-6,-3,0,3,6]){let seam=box('canopy roof expansion seam',x,5.45,1.1,.035,.025,7.9,concrete);seam.checkCollisions=false;}
 for(let x of [-8.5,8.5])for(let z of [-2,4.2])box('canopy column',x,2.55,z,.38,5.1,.38,dark);
-for(let x of [-6,0,6]){let lamp=box('canopy light',x,4.96,1.1,1.35,.045,.42,lightmat);let pl=new BABYLON.PointLight('warm canopy glow',new BABYLON.Vector3(x,4.7,1.1),scene);pl.diffuse=new BABYLON.Color3(1,.78,.52);pl.intensity=.32;pl.range=8;}
+for(let x of [-6,0,6]){let lamp=box('canopy light',x,4.96,1.1,1.35,.045,.42,lightmat);let pl=new BABYLON.PointLight('warm canopy glow',new BABYLON.Vector3(x,4.7,1.1),scene);pl.setEnabled(false);pl.diffuse=new BABYLON.Color3(1,.78,.52);pl.intensity=.32;pl.range=8;}
 // Imported high-detail GLB fuel pumps. The concrete islands remain part of the station scene.
-// Prototype 07 replaces the old box-built pump placeholders with a real multi-part 3D asset.
+// Prototype 07.1 replaces the old box-built pump placeholders with a real multi-part 3D asset.
 (async()=>{
  const pumpPlacements=[[-5,1], [0,1], [5,1]];
  for(let i=0;i<pumpPlacements.length;i++){
   const [x,z]=pumpPlacements[i];
   try{
    const result=await BABYLON.SceneLoader.ImportMeshAsync(null,'./assets/','LAST_LIGHT_Fuel_Pump.glb',scene);
+   // Compatibility safeguard: glTF imports PBR materials with large reflection uniform
+   // blocks. Convert only this imported asset to StandardMaterial so it cannot exceed
+   // the browser's vertex-uniform-buffer limit. Keep its base-color and emissive textures.
+   const compatibleMaterials=new Map();
+   for(const mesh of result.meshes){
+    const sourceMat=mesh.material;
+    if(sourceMat && sourceMat.getClassName && sourceMat.getClassName().includes('PBR')){
+     if(!compatibleMaterials.has(sourceMat.uniqueId)){
+      const safeMat=new BABYLON.StandardMaterial(sourceMat.name+' | GLB compatibility',scene);
+      if(sourceMat.albedoColor)safeMat.diffuseColor=sourceMat.albedoColor.clone();
+      if(sourceMat.albedoTexture)safeMat.diffuseTexture=sourceMat.albedoTexture;
+      if(sourceMat.emissiveColor)safeMat.emissiveColor=sourceMat.emissiveColor.clone();
+      if(sourceMat.emissiveTexture)safeMat.emissiveTexture=sourceMat.emissiveTexture;
+      safeMat.alpha=sourceMat.alpha;
+      const metallic=Number.isFinite(sourceMat.metallic)?sourceMat.metallic:0;
+      const roughness=Number.isFinite(sourceMat.roughness)?sourceMat.roughness:.75;
+      safeMat.specularColor=new BABYLON.Color3(.12+metallic*.42,.12+metallic*.42,.12+metallic*.42);
+      safeMat.specularPower=Math.max(8,Math.min(96,96*(1-roughness)));
+      safeMat.backFaceCulling=sourceMat.backFaceCulling;
+      compatibleMaterials.set(sourceMat.uniqueId,safeMat);
+     }
+     mesh.material=compatibleMaterials.get(sourceMat.uniqueId);
+    }
+   }
    const root=result.meshes.find(m=>m.name==='__root__')||result.meshes[0];
    root.position=new BABYLON.Vector3(x,.39,z);
    root.scaling=new BABYLON.Vector3(1,1,1);
@@ -126,7 +150,7 @@ for(let i=0;i<13;i++){let puddle=BABYLON.MeshBuilder.CreateDisc('shallow rain pu
 const oil=mat('old oil stains','#202624');oil.diffuseColor=new BABYLON.Color3(.18,.2,.18);for(let i=0;i<8;i++){let stain=BABYLON.MeshBuilder.CreateDisc('oil slick',{radius:1,tessellation:20},scene);stain.scaling.set(.6+(i%3)*.4,1,.18+(i%2)*.1);stain.rotation.x=Math.PI/2;stain.position.set(-10+i*2.8,.047,5+(i%3)*1.3);stain.material=oil;stain.checkCollisions=false;}
 for(let i=0;i<18;i++){let shard=BABYLON.MeshBuilder.CreatePolyhedron('broken glass shard',{type:1,size:.22+(i%4)*.08},scene);shard.position.set(-7+(i*1.83)%15,.08,4+(i*1.17)%7);shard.scaling.y=.08;shard.rotation.y=i*.73;shard.material=glass;shard.checkCollisions=false;}
 box('fallen road sign post',-17,.18,1,.12,.35,.12,wood).rotation.z=1.1;box('fallen road sign',-17,.42,1.4,1.8,.85,.12,red).rotation.z=-.24;
-// WASHINGTON STATE  /  3D ASSET TEST 07 FOREST + RURAL HIGHWAY. Forest assets are instanced low-cost
+// WASHINGTON STATE  /  3D ASSET TEST 07.2 FOREST + RURAL HIGHWAY. Forest assets are instanced low-cost
 // procedural stand-ins for the first playable pass; replace hero trees with optimized licensed GLBs later.
 const roadMat=mat('forest highway asphalt','#292f2e');roadMat.diffuseTexture=surface('highway aggregate','#292f2e','#505752','#171d1c',8);
 const lineMat=mat('worn road paint','#d1c5a0');lineMat.emissiveColor=new BABYLON.Color3(.035,.028,.012);
@@ -201,6 +225,7 @@ try{
 for(const oldMat of [...scene.materials]){
   if(!(oldMat instanceof BABYLON.StandardMaterial))continue;
   const pbr=new BABYLON.PBRMaterial(oldMat.name+' | PBR',scene);
+  pbr.maxSimultaneousLights=2;
   pbr.albedoColor=oldMat.diffuseColor?oldMat.diffuseColor.clone():new BABYLON.Color3(.7,.7,.7);
   pbr.albedoTexture=oldMat.diffuseTexture||null;
   pbr.bumpTexture=oldMat.bumpTexture||null;
@@ -226,8 +251,9 @@ const sky=BABYLON.MeshBuilder.CreateSphere('large cinematic sky dome',{diameter:
 try{
  const pipeline=new BABYLON.DefaultRenderingPipeline('LAST LIGHT cinematic pipeline',true,scene,[camera]);
  pipeline.fxaaEnabled=true;pipeline.samples=2;pipeline.bloomEnabled=true;pipeline.bloomThreshold=.82;pipeline.bloomWeight=.12;pipeline.bloomKernel=48;pipeline.bloomScale=.5;
- const ssao=new BABYLON.SSAO2RenderingPipeline('LAST LIGHT ambient occlusion',scene,{ssaoRatio:.5,blurRatio:.5},[camera]);
- ssao.radius=2.1;ssao.totalStrength=.72;ssao.expensiveBlur=true;ssao.samples=16;ssao.maxZ=90;
+ // SSAO2 is omitted in this compatibility build because its pre-pass MRT path
+ // adds extra shader uniform blocks on some browser/GPU combinations.
+
 }catch(e){console.warn('Optional cinematic post-processing unavailable; scene will render without it.',e);}
 
 // Subtle warm distance haze; forest fog stays light so the late-afternoon sun remains readable.
