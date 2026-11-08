@@ -74,7 +74,7 @@ const doorLeaves=[];
 function makeDoorLeaf(name,hingeX,side){
  const pivot=new BABYLON.TransformNode(name+' hinge pivot',scene);
  pivot.position.set(hingeX,0,-4.66);
- const width=1.01, centerX=side*width/2, innerX=side*(width-.12);
+ const width=1.01, centerX=side*width/2, innerX=side*(width-.03);
  const part=(partName,x,y,z,w,h,d,material)=>{
   const mesh=box(name+' '+partName,0,0,0,w,h,d,material);
   mesh.parent=pivot;mesh.position.set(x,y,z);mesh.checkCollisions=false;mesh.isPickable=false;return mesh;
